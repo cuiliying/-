@@ -1,9 +1,9 @@
 # ------------中文对话------------
-# AdvertiseGen广告文案生成数据集
+## AdvertiseGen广告文案生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=9
-## 数据集介绍
+### 数据集介绍
 AdvertiseGen以商品网页的标签与文案的信息对应关系为基础构造，是典型的开放式生成任务，在模型基于key-value输入生成开放式文案时，与输入信息的事实一致性需要得到重点关注。
-## 数据预览
+### 数据预览
 任务描述：给定商品信息的关键词和属性列表kv-list，生成适合该商品的广告文案adv；
 数据规模：训练集114k，验证集1k，测试集3k；
 数据来源：清华大学CoAI小组；
@@ -14,27 +14,27 @@ AdvertiseGen以商品网页的标签与文案的信息对应关系为基础构�
   "summary": "简约而不简单的牛仔外套，白色的衣身十分百搭。衣身多处有做旧破洞设计，打破单调乏味，增加一丝造型看点。衣身后背处有趣味刺绣装饰，丰富层次感，彰显别样时尚。"
 }
 ```
-## 基线系统
+### 基线系统
 本数据集提供的基线系统，基于百度提出的ERNIE-UNIMO统一模态预训练框架。在本次比赛的三个文本生成任务中，我们基于本基线使用的模型是UNIMO-text,是基于ERNIE-UNIMO框架在文本数据上预训练得到模型。
 GitHub 基线系统
 面向事实一致性的生成评测基线
-## 数据集引用
+### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
 ···
 Shao, Zhihong, et al. "Long and Diverse Text Generation with Planning-based Hierarchical Variational Model." Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). 2019.
 ···
-## MD5
+### MD5
 4be89fb276e8727923262d786cd3007c
 
-# LCSTS_new中文短摘要生成数据集
+## LCSTS_new中文短摘要生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=10
 任务类型：文本生成
 数据集大小：263.1M
 使用权限：学术
 特点：事实一致性
-## 数据集介绍
+### 数据集介绍
 LCSTS_new是中文短摘要最常用的LCSTS短摘要数据集的升级版本，在数据量、质量方面均有显著提升，在信息摘要与提炼的过程中，与原文的事实一致性需要得到重点关注。
-## 数据预览
+### 数据预览
 任务描述：给定文章正文doc，生成符合文章信息的摘要sum；
 数据规模：训练集1500k，验证集 1k，测试集5k；
 数据来源：LCSTS；
@@ -46,28 +46,28 @@ LCSTS_new是中文短摘要最常用的LCSTS短摘要数据集的升级版本，
   "content": "①北京和上海户籍的游客可获得韩国多次签证；②“整容客”可以不经由韩国使领馆、直接在网上申请签证；③中泰免签的实施日期尚未敲定；④越南已向中国持通行证旅游的公民全面开放。"
 }
 ```
-## 基线系统
+### 基线系统
 本数据集提供的基线系统，基于百度提出的ERNIE-UNIMO统一模态预训练框架。在本次比赛的三个文本生成任务中，我们基于本基线使用的模型是UNIMO-text,是基于ERNIE-UNIMO框架在文本数据上预训练得到模型。
 GitHub 基线系统
 面向事实一致性的生成评测基线
-## 数据集引用
+### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
 ```
 Hu, Baotian, Qingcai Chen, and Fangze Zhu. "LCSTS: A Large Scale Chinese Short Text Summarization Dataset." Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing. 2015.
 ```
-## MD5
+### MD5
 98479b44179f0657526f7bb32721ef22
 
-# DuReader_QG问题生成数据集
+## DuReader_QG问题生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=8
 任务类型：文本生成
 数据集大小：6M
 使用权限：学术
 特点：事实一致性
-## 数据集介绍
+### 数据集介绍
 DuReader robust旨在利用真实应用中的数据样本来衡量阅读理解模型的鲁棒性，评测模型的过敏感性、过稳定性以及泛化能力，是首个中文阅读理解鲁棒性数据集。
 DuReader_QG是从DuReader robust中选择的问题生成任务子集
-## 数据预览
+### 数据预览
 任务描述：给定段落p和答案a，生成自然语言表述的问题q，且该问题符合段落和上下文的限制；
 数据规模：训练集约14.5k，开发集约1k，测试集约1k；
 数据样例：
@@ -79,24 +79,24 @@ DuReader_QG是从DuReader robust中选择的问题生成任务子集
   "id": 17
 }
 ```
-## 基线系统
+### 基线系统
 本数据集提供的基线系统，基于百度提出的ERNIE-UNIMO统一模态预训练框架。在本次比赛的三个文本生成任务中，我们基于本基线使用的模型是UNIMO-text,是基于ERNIE-UNIMO框架在文本数据上预训练得到模型。
 GitHub 基线系统
 面向事实一致性的生成评测基线
-## 数据集引用
+### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
 ```
 Tang, H., et al. (2021). DuReader_robust: A Chinese Dataset Towards Evaluating Robustness and Generalization of Machine Reading Comprehension in Real-World Applications. Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 2: Short Papers), 955–963.  
 ```
-## MD5
+### MD5
 63b8fc89decc610df8516ccf4c55768c
 
 # ------------情感分析------------
-# ChnSentiCorp句子级情感分类数据集
+## ChnSentiCorp句子级情感分类数据集
 https://www.luge.ai/#/luge/dataDetail?id=25
-## 数据集介绍
+### 数据集介绍
 经典的句子级情感分类数据集，包含酒店、笔记本电脑和数据相关的网络评论数据，共包含积极、消极两个类别。
-## 数据预览
+### 数据预览
 本数据集任务类型为句子级情感分类。任务定义如下：
 对于给定的文本d，系统需要根据文本的内容，给出其对应的情感类别或者情感得分s，类别s取值可以是“积极”、“消极”的离散值，表示情感类别。也可以是1-5的连续实数，表示情感得分（详见ASAP_SENTI数据集）。数据集中每个样本是一个二元组<d, s>，样例如下：
 –输入文本（d）：15.4寸笔记本的键盘确实爽，基本跟台式机差不多了，蛮喜欢数字小键盘，输数字特方便，样子也很美观，做工也相当不错
@@ -105,13 +105,13 @@ https://www.luge.ai/#/luge/dataDetail?id=25
 任务类别	数据集名称	训练集大小	开发集大小	测试集大小
 句子级情感分类	ChnSentiCorp	9600	1200	1200
 注：部分数据集并不包含开发集，用户在模型训练时可通过交叉验证的方式调节模型参数。
-## 基线系统
+### 基线系统
 GitHub 基线系统
 SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis
-## MD5
+### MD5
 7ef61b08ad10fbddf2ba97613f071561
 
-# SE-ABSA16观点级情感分类数据集
+## SE-ABSA16观点级情感分类数据集
 https://www.luge.ai/#/luge/dataDetail?id=18
 数据集介绍
 观点级情感分类是一种细粒度的情感分类任务，旨在评论分本中针对不同评价对象或者评论维度的情感分类。该数据集包含积极、消极两个类别。共覆盖手机、相机两个领域的数据。
@@ -133,7 +133,7 @@ Maria, P., et al. (2016) SemEval-2016 Task 5: Aspect based sentiment analysis. I
 MD5
 6d8e4d6608afd65ade2d026a66e15583
 
-# COTE中文观点抽取数据集
+## COTE中文观点抽取数据集
 https://www.luge.ai/#/luge/dataDetail?id=19
 数据集介绍
 评价对象抽取任务旨在对于给定的评论文本，自动抽取其中包含的评价对象。该任务是情感分析中的基础任务之一，该数据集覆盖百度、点评和马蜂窝上抓取的数据。
@@ -159,7 +159,7 @@ Yan, L., et al. (2018) Character-based bilstm-crf incorporating pos and dictiona
 MD5
 5e741b1326913ef497e7fcc59a239bdf
 
-# NLPCC14-SC情感分类评测数据集
+## NLPCC14-SC情感分类评测数据集
 https://www.luge.ai/#/luge/dataDetail?id=20
 数据集介绍
 该数据集来自NLPCC 2014 情感分类评测任务数据集，旨在评估深度学习方法在情感分类任务上的效果，数据集覆盖多个领域（例如：书籍、DVD、电子等），共包含积极、消极两个类别。
@@ -179,7 +179,7 @@ SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis
 MD5
 4792a0982bc64b83d9a76dcce8bc00ad
 
-# ASAP中文评论分析数据集
+## ASAP中文评论分析数据集
 https://www.luge.ai/#/luge/dataDetail?id=17
 数据集介绍
 业界最大规模中文评论分析数据集ASAP，首次实现对评论得分预估和对象级情感分类两个任务的联合标注，数据全部源于真实的电商场景，从数据规模和标注质量上都远超其他数据集。
@@ -211,7 +211,7 @@ Bu, J., et al.(2021). ASAP: A Chinese Review Dataset Towards Aspect Category Sen
 MD5
 eab03c71e480a255c6b58dd04db8bee9
 
-# DuVideoSenti多模态情感标签数据集
+## DuVideoSenti多模态情感标签数据集
 https://www.luge.ai/#/luge/dataDetail?id=21
 数据集介绍
 面向推荐场景推出多模态情感标签数据集DuVideoSenti，引入视频情感泛标签预测任务，构建了视频情感泛标签体系。该体系由人工定义的“文艺清新”、“时尚炫酷”、“舒适温馨”等11个情感泛标签组成，用以刻画用户浏览视频后的视觉和情感方面的感受。数据集为每个小视频标注了情感泛标签，并且提供了视频的标题、帧图特征用于模型的训练和预测。
@@ -235,7 +235,7 @@ https://www.luge.ai/#/luge/dataDetail?id=21
 
 Tang, H., et al. (2021). A MultiModal Sentiment Dataset for Video Recommendation.
 
-# SENTI_ROBUST中文情感鲁棒性数据集
+## SENTI_ROBUST中文情感鲁棒性数据集
 https://www.luge.ai/#/luge/dataDetail?id=23
 数据集介绍
 “可信AI”的概念在近几年提出，并且逐渐成为全球共识。可信AI，就是保证AI系统的可解释性、鲁棒性和公平性，确保算法可被人信任。在情感分析技术的科学研究和产业落地中，可信情感分析系统需要具备较强的鲁棒性和可解释能力，也就是要求模型针对各种不同表达，既能给出精准的预测结果，还能给出其判断依据，从而保证模型的预测结果更加置信。
@@ -264,7 +264,7 @@ Wang,L., et al. (2021) A Sentiment Analysis Dataset for Trustworthiness Evaluati
 MD5
 02d3c29c83de848ad772ca773ce6c4d6
 
-# SENTI_RATIONAL情感可解释性数据集
+## SENTI_RATIONAL情感可解释性数据集
 https://www.luge.ai/#/luge/dataDetail?id=22
 数据集介绍
 “可信AI”的概念在近几年提出，并且逐渐成为全球共识。可信AI，就是保证AI系统的可解释性、鲁棒性和公平性，确保算法可被人信任。在情感分析技术的科学研究和产业落地中，可信情感分析系统需要具备较强的鲁棒性和可解释能力，也就是要求模型针对各种不同表达，既能给出精准的预测结果，还能给出其判断依据，从而保证模型的预测结果更加置信。
@@ -295,14 +295,14 @@ MD5
 fc04f4f7904da78ad60e3ba685471795
 
 # ------------中文对话------------
-# 豆瓣中文开放域对话数据集
+## 豆瓣中文开放域对话数据集
 https://www.luge.ai/#/luge/dataDetail?id=33
 任务类型：中文对话
 数据集大小：145M
 特点：闲聊能力
-## 数据集介绍
+### 数据集介绍
 Douban是一个大规模中文开放域对话数据集，旨在考察模型在闲聊场景中，是否可以生成流畅的、与上下文相关的对话回复。
-## 数据预览
+### 数据预览
 该数据集的任务定义如下：
 给定对话历史H(u_1, u_2, …, u_t-1)
 要求参评系统预测：符合对话历史，且自然流畅、信息丰富的机器回复u_t。
@@ -402,15 +402,15 @@ Douban是一个大规模中文开放域对话数据集，旨在考察模型在�
   "situation": "聊天时间:2018-12-24 中午12:00，在公司 星期一"
 }
 ```
-## 数据集引用
+### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
 ```
 Yu Wu, Wei Wu, Chen Xing, Ming Zhou, Zhoujun Li. 2017. Sequential Matching Network: A New Archtechture for Multi-turn Response Selection in Retrieval-based Chatbots. In ACL.
 ```
-## MD5
+### MD5
 557b8f289d57478af442ba67c25037ec
 
-# DuConv知识对话数据集
+## DuConv知识对话数据集
 https://www.luge.ai/#/luge/dataDetail?id=30
 数据集介绍
 DuConv旨在考察模型是否可以在对话过程中充分利用外部知识(既包括结构化知识，也包括非结构化知识)，并且在生成对话回复的过程中引入外部知识，是首个bot主动的中文知识对话数据集。
@@ -606,7 +606,7 @@ LIC 2021对话比赛baseline
 
 Wenquan Wu, Zhen Guo, Xiangyang Zhou, Hua Wu, Xiyuan Zhang, Rongzhong Lian, and Haifeng Wang. 2019. Proactive human-machine conversation with explicit conversation goal. In ACL.
 
-# DuRecDial对话推荐数据集
+## DuRecDial对话推荐数据集
 https://www.luge.ai/#/luge/dataDetail?id=31
 数据集介绍
 DuRecDial是首个融合多种对话类型的对话推荐数据集，它包含多种对话类型、多领域和丰富对话逻辑(考虑用户实时反馈)。在每个对话中，推荐者(bot)使用丰富的交互行为主动引导一个多类型对话不断接近推荐目标。DuRecDial旨在考察模型是否可以在对话过程中基于用户兴趣以及用户的实时反馈，主动给用户做出合理的推荐。
@@ -802,7 +802,7 @@ LIC 2021对话比赛baseline
 
 Zeming Liu, Haifeng Wang, Zheng-Yu Niu, Hua Wu, Wanxiang Che, Ting Liu. 2020. Towards Conversational Recommendation over Multi-Type Dialogs. In ACL.
 
-# LUGE-Dialogue开放域对话数据集合
+## LUGE-Dialogue开放域对话数据集合
 https://www.luge.ai/#/luge/dataDetail?id=26
 数据集介绍
 本数据集旨在全面评测基于统一生成模型建模不同对话技能的整体效果，包括内容丰富度，多轮连贯性，知识准确率，对话主动性。
@@ -860,7 +860,7 @@ LIC 2021对话比赛baseline
 MD5
 40e3ed52324c7aa7135d3d50a64e4255
 
-# Tencent中文开放域对话数据集
+## Tencent中文开放域对话数据集
 https://www.luge.ai/#/luge/dataDetail?id=36
 数据集介绍
 Tencent是一个大规模的检索辅助生成的中文开放域对话数据集，旨在考察模型在闲聊场景中，是否可以生成流畅的、与上下文相关的对话回复。
@@ -976,7 +976,7 @@ Deng Cai, Yan Wang, Wei Bi, Zhaopeng Tu, Xiaojiang Liu, Shuming Shi. 2019. Retri
 MD5
 e0d00555e486e99296c36a6332530bd0
 
-# 微博开放域短文本对话数据集
+## 微博开放域短文本对话数据集
 https://www.luge.ai/#/luge/dataDetail?id=32
 数据集介绍
 Weibo是一个大规模中文开放域短文本对话数据集，旨在考察模型在闲聊场景中，是否可以生成流畅的、与上下文相关的对话回复。
@@ -1092,7 +1092,7 @@ Lifeng Shang, Zhengdong Lu, Hang Li. 2015. Neural Responding Machine for Short-T
 MD5
 d1e6913d32312ebc3e9d65afe2988a2d
 
-# KdConv中文知识对话数据集
+## KdConv中文知识对话数据集
 https://www.luge.ai/#/luge/dataDetail?id=35
 数据集介绍
 KdConv是一个多领域的中文知识对话数据集，旨在考察模型是否可以在对话过程中充分利用外部知识，并且在生成对话回复的过程中引入外部知识。
@@ -1208,7 +1208,7 @@ Hao Zhou, Chujie Zheng, Kaili Huang, Minlie Huang, Xiaoyan Zhu. 2020. KdConv: A 
 MD5
 e0c06b164bd64717cca57300eb4baa66
 
-# LCCC开放域短文本对话数据集
+## LCCC开放域短文本对话数据集
 闲聊数据集，考察模型在闲聊场景中，是否可以生成流畅的、与上下文相关的对话回复
 https://www.luge.ai/#/luge/dataDetail?id=34
 数据集介绍
@@ -1325,7 +1325,7 @@ Yida Wang, Pei Ke, Yinhe Zheng, Kaili Huang, Yong Jiang, Xiaoyan Zhu, Minlie Hua
 MD5
 19aa6f1064e2f61ecc72b74817a5995f
 
-# 中文画像对话（Chinese Persona Chat）数据集
+## 中文画像对话（Chinese Persona Chat）数据集
 画像对话数据集，考察对话模型在闲聊场景中是否可以生成与给定画像一致的回复
 https://www.luge.ai/#/luge/dataDetail?id=38
 数据集介绍
@@ -1518,7 +1518,7 @@ LIC 2021对话比赛baseline
 MD5
 62c6f13b4686ce1e47b95b8cdbd01fec
 
-# Emotional STC （ESTC）情感对话数据集
+## Emotional STC （ESTC）情感对话数据集
 情感对话数据集，考察模型是否可以在对话过程中充分利用情感信息，并生成具有正确情感倾向、且与上下文相关的对话回复
 https://www.luge.ai/#/luge/dataDetail?id=37
 数据集介绍

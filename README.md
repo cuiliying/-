@@ -1635,6 +1635,944 @@ Hao Zhou, Minlie Huang, Tianyang Zhang, Xiaoyan Zhu, Bing Liu. 2019. Emotional C
 MD5
 a5ba4df8c3a51d63d7c0d6e4994f8690
 
+# --------------阅读理解------------
+## Dureaderchecklist阅读理解细粒度评估数据集
+抽取式阅读理解数据集，从细粒度、多维度挑战机器理解语言的能力
+https://www.luge.ai/#/luge/dataDetail?id=3
+数据集介绍
+Dureader checklist建立了细粒度的、多维度的评测手段，从词汇理解、短语理解、语义角色理解、逻辑推理等多个维度检测模型的不足之处，从而推动阅读理解评测进入“精细化“时代。该数据集中的样本均来自于实际的应用场景，难度大，考察点丰富，覆盖了真实应用中诸多难以解决的问题。
+数据预览
+DuReaderchecklist数据集是单篇章、抽取式阅读理解数据集，具体任务定义为：
+给定一个问题q，一段篇章p及其标题t，参赛系统需要根据篇章内容，判断该篇章p中是否包含给定问题的答案，如果是，则给出该问题的答案a；否则输出“无答案”。数据集中的每个样本，是一个四元组，例如：
+
+问题 ( q ): 番石榴汁热量
+篇章 ( p ): 番石榴性温,味甜、酸、涩…，最重要的是番石榴所含的脂肪热量较低,一个番石榴所含的脂肪约0.9克重或84卡路里。比起苹果,番石榴所含有的脂肪少38%,卡路里少42%。
+标题 ( t ): 番石榴汁的热量 - 妈妈网百科
+参考答案 ( a ): [‘一个番石榴所含的脂肪约0.9克重或84卡路里’]
+
+问题 ( q ): 云南文山市多少人口?
+篇章 ( p ): 云南省下辖8个市、8个少数民族自治州,面积39万平方千米,总人口4596万人,云南汉族人口为3062.9万人,占云南省总人口的66.63%…
+标题 ( t ): 云南总人口数多少人,2019年云南人口数量统计(最新)
+参考答案 ( a ): [‘无答案’]
+
+关于该数据集的详细介绍，可参考该网站
+https://github.com/PaddlePaddle/Research/tree/master/NLP/DuReader-Checklist-BASELINE
+{
+  "data": [
+    {
+      "paragraphs": [
+        {
+          "context": "高铁和动车上是可以充电的,充电插头就在座位下边或者是前边。高铁动车上的充电插座排布与车型新旧有关。有些车座位是每排座位两个电源插座,有些新型车比如说“复兴号”是每两个座位有一个电源。祝旅途愉快!",
+          "qas": [
+            {
+              "question": "高铁站可以充电吗",
+              "type": "vocab_noun",
+              "id": "ebbe3fc466f0f04177b8a64d2ee0de69",
+              "answers": [
+                {
+                  "text": "",
+                  "answer_start": -1
+                }
+              ],
+              "is_impossible": true
+            }
+          ],
+          "title": "高铁和动车上能充电吗? - 知乎"
+        },
+        {
+          "context": "【皋】字读音既可读gāo,又可读háo。读作gāo时,字义有三种意思,水边的高地或岸;沼泽,湖泊;姓氏。读作háo时,有号呼;呼告的意思。皋读作háo时... 全文",
+          "qas": [
+            {
+              "question": "皋怎么读",
+              "type": "in-domain",
+              "id": "e3ffa587bba2478191e357cd9a56d10b",
+              "answers": [
+                {
+                  "text": "既可读gāo,又可读háo",
+                  "answer_start": 6
+                }
+              ],
+              "is_impossible": false
+            }
+          ],
+          "title": "皋怎么读 - 懂得"
+        }
+      ]
+    }
+  ]
+}
+基线系统
+本数据集提供基于飞桨框架PaddlePaddle2.0和PaddleNLP的开源基线系统，提供丰富的高层API，全面支持动态图开发模式，从开发、训练到预测部署提供优质的整体体验。推荐您参照基线方案，基于PaddleNLP的丰富API库进行二次开发、模型调优和方案创新。
+GitHub 基线系统
+阅读理解 Dureader_checklist基线系统
+Aistudio基线系统
+LIC2021竞赛阅读理解任务基线系统
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+He, W., et al. (2018). DuReader: a Chinese Machine Reading Comprehension Dataset from Real-world Applications. Proceedings of the Workshop on Machine Reading for Question Answering, 37–46.  
+
+## DuReaderrobust阅读理解鲁棒性数据集
+抽取式阅读理解数据集，考察模型鲁棒性
+https://www.luge.ai/#/luge/dataDetail?id=1
+数据集介绍
+DuReader robust旨在利用真实应用中的数据样本来衡量阅读理解模型的鲁棒性，评测模型的过敏感性、过稳定性以及泛化能力，是首个中文阅读理解鲁棒性数据集。
+数据预览
+DuReaderrobust数据集是单篇章、抽取式阅读理解数据集，具体的任务定义为：
+对于一个给定的问题q和一个篇章p，参赛系统需要根据篇章内容，给出该问题的答案a。数据集中的每个样本，是一个三元组q, p, a，例如：
+问题 q: 乔丹打了多少个赛季
+篇章 p: 迈克尔.乔丹在NBA打了15个赛季。他在84年进入nba，期间在1993年10月6日第一次退役改打棒球，95年3月18日重新回归，在99年1月13日第二次退役，后于2001年10月31日复出，在03年最终退役…
+参考答案 (a): [‘15个’,‘15个赛季’]
+关于该数据集的详细内容，可参考数据集论文：
+https://arxiv.org/abs/2004.11142
+{
+  "data": [
+    {
+      "paragraphs": [
+        {
+          "qas": [
+            {
+              "question": "非洲气候带",
+              "id": "bd664cb57a602ae784ae24364a602674",
+              "answers": [
+                {
+                  "text": "热带气候",
+                  "answer_start": 45
+                }
+              ]
+            }
+          ],
+          "context": "1、全年气温高，有热带大陆之称。主要原因在与赤道穿过大陆中部，位于南北纬30度之间，主要是热带气候，没有温带和寒带。2、气候带呈明显带状分布，且南北对称。原因在于赤道穿过大陆中部，整个大陆基本被赤道均分为两部分。因此，纬度地带性明显。气候带以热带雨林为中心，向南北依次分布着热带草原、热带沙漠和地中海式气候。3、气候炎热干燥。第一：热带雨林气候面积较小，主要位于刚果河流域，面积较小。第二，地中海式气候，位于大陆的南北边缘，面积较小。夏季炎热而干旱，冬季温暖而湿润。第三，面积较大热带草原气候，有明显的干湿季。第四，热带沙漠气候主要位于撒哈拉大沙漠和西南角狭长地带。而撒哈拉沙漠占非洲总面积的1/4，全年炎热干燥，日照时间长，昼夜温差大。总之，全非洲纬度低，气温高；干燥地区广，常年湿润地区面积小。"
+        },
+        {
+          "qas": [
+            {
+              "question": "韩国全称",
+              "id": "a7eec8cf0c55077e667e0d85b45a6b34",
+              "answers": [
+                {
+                  "text": "大韩民国",
+                  "answer_start": 5
+                }
+              ]
+            }
+          ],
+          "context": "韩国全称“大韩民国”，位于朝鲜半岛南部，隔“三八线”与朝鲜民主主义人民共和国相邻，面积9.93万平方公理，南北长约500公里，东西宽约250公里，东濒日本海，西临黄海 ，东南与日本隔海相望。 韩国的地形特点是山地多，平原少，海岸线长而曲折。韩国四 季分明，气候温和、湿润。目前韩国主要政党包括执政的新千年民主党和在野的大国家党、自由民主联盟等，大国家党为韩国会内的第一大党。韩国首都为汉城，全国设有1个特别市（汉城市）、6个广域市（釜山市、大邱市、仁川市、光州市、大田市、蔚山市）、9个道（京畿道、江源道、忠清北道、忠清南道、全罗北道、全罗南道、庆尚北道、庆尚南道、济州道）。海岸线全长5,259公里，主要港口有釜山、仁川、浦项、蔚山、光阳等。"
+        }
+      ]
+    }
+  ]
+}
+基线系统
+本数据集提供基于飞桨框架PaddlePaddle2.0和PaddleNLP的开源基线系统，提供丰富的高层API，全面支持动态图开发模式，从开发、训练到预测部署提供优质的整体体验。推荐您参照基线方案，基于PaddleNLP的丰富API库进行二次开发、模型调优和方案创新。
+GitHub 基线系统
+千言-问题匹配鲁棒性评测基线
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Tang, H., et al. (2021). DuReader_robust: A Chinese Dataset Towards Evaluating Robustness and Generalization of Machine Reading Comprehension in Real-World Applications. Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 2: Short Papers), 955–963.
+
+## DuReaderyesno观点型阅读理解数据集
+观点型阅读理解数据集 ，考察模型对观点极性的判断
+https://www.luge.ai/#/luge/dataDetail?id=2
+数据集介绍
+DuReader yesno是一个以观点极性判断为目标任务的数据集，可以弥补抽取类数据集评测指标的缺陷，从而更好地评价模型对观点极性的理解能力。
+数据预览
+DuReader_yesno数据集的任务定义如下：
+对于一个给定的问题q、一系列相关文档D=d1, d2, …, dn，以及人工抽取答案段落摘要a，要求参评系统自动对问题q、候选文档D以及答案段落摘要a进行分析，输出每个答案段落摘要所表述的是非观点极性。其中，极性分为三类 {Yes, No, Depends}。其中：
+
+Yes：肯定观点，肯定观点指的是答案给出了较为明确的肯定态度。有客观事实的从客观事实的角度出发，主观态度类的从答案的整体态度来判断。
+No：否定观点，否定观点通常指的是答案较为明确的给出了与问题相反的态度。
+Depends：无法确定/分情况，主要指的是事情本身存在多种情况，不同情况下对应的观点不一致；或者答案本身对问题表示不确定，要具体具体情况才能判断。
+
+例如：
+{
+  "documents": [
+    {
+      "title": "香蕉能放冰箱吗 香蕉剥皮冷冻保存_健康贴士_保健_99健康网",
+      "paragraphs": [
+        "本文导读:............."
+      ]
+    }
+  ],
+  "yesno_answer": "No",
+  "question": "香蕉能放冰箱吗",
+  "answer": "香蕉不能放冰箱，香蕉如果放冰箱里，会更容易变坏，会发黑腐烂。",
+  "id": 293
+}
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+He, W., et al. (2018). DuReader: a Chinese Machine Reading Comprehension Dataset from Real-world Applications. Proceedings of the Workshop on Machine Reading for Question Answering, 37–46.
+
+# ------------文本相似度--------------
+## LCQMC通用领域问题匹配数据集
+中文领域大规模问题匹配数据集
+https://www.luge.ai/#/luge/dataDetail?id=14
+数据集介绍
+百度知道领域的中文问题匹配数据集，目的是为了解决在中文领域大规模问题匹配数据集的缺失。该数据集从百度知道不同领域的用户问题中抽取构建数据。
+数据预览
+该数据集的任务定义如下：给定两个问题Q，判定该问题对语义是否匹配。
+类型	句子1	句子2	标签（label）
+相似文本	看图猜一电影名	看图猜电影	1
+不相似文本	无线路由器怎么无线上网	无线上网卡和无线路由器怎么用	0
+此外，本数据集划分为了训练集、验证集和测试集，具体统计数据如下表所示：
+数据集名称	训练集大小	开发集大小	测试集大小
+LCQMC	238766	8802	12500
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Liu X, Chen Q, Deng C, et al. Lcqmc: A large-scale chinese question matching corpus[C]//Proceedings of the 27th International Conference on Computational Linguistics. 2018: 1952-1962.
+
+## OPPO小布对话文本语义匹配数据集
+采样自智能对话场数据，考察问题匹配模型在对话意图理解能力
+https://www.luge.ai/#/luge/dataDetail?id=28
+数据集介绍
+通过对闲聊、智能客服、影音娱乐、信息查询等多领域真实用户交互语料进行用户信息脱敏、相似度筛选处理得到，数据集主要特点是文本较短、非常口语化、存在文本高度相似而语义不同的难例。该数据集所有标签都有经过人工精标确认。
+数据预览
+该数据集的任务定义如下：给定两个问题Q，判定该问题对语义是否匹配。
+{
+  "test": [
+    {
+      "q1": "录制的视频没有声音",
+      "q2": "相册里面视频没有声音"
+    },
+    {
+      "q1": "最近出的OPPO手机。",
+      "q2": "oppo最好的手机"
+    }
+  ],
+  "train": [
+    {
+      "q1": "充电提示音",
+      "q2": "开启充电提示音",
+      "label": "0"
+    },
+    {
+      "q1": "那叫你帮我找在这里香肠派对吗",
+      "q2": "那麻烦帮我定下位好吗",
+      "label": "0"
+    }
+  ],
+  "dev": [
+    {
+      "q1": "什么音乐是你知道的",
+      "q2": "网易云音乐关闭",
+      "label": "0"
+    },
+    {
+      "q1": "你是不是傻呀",
+      "q2": "想问你是不是傻呀",
+      "label": "1"
+    }
+  ]
+}
+MD5
+7f9ab99ab0fd5f0e7f94bcf31b0b7d09
+
+## BQ金融领域问题匹配数据集
+金融领域数据集，考察模型在金融领域上的能力
+https://www.luge.ai/#/luge/dataDetail?id=15
+数据集介绍
+银行金融领域的问题匹配数据，包括了从一年的线上银行系统日志里抽取的问题pair对，是目前最大的银行领域问题匹配数据。
+数据预览
+该数据集的任务定义如下：给定两个问题Q，判定该问题对语义是否匹配。
+类型	句子1	句子2	标签（label）
+相似文本	看图猜一电影名	看图猜电影	1
+不相似文本	无线路由器怎么无线上网	无线上网卡和无线路由器怎么用	0
+此外，本数据集划分为了训练集、验证集和测试集，具体统计数据如下表所示：
+数据集名称	训练集大小	开发集大小	测试集大小
+BQ Corpus	100000	10000	10000
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Chen J, Chen Q, Liu X, et al. The bq corpus: A large-scale domain-specific chinese corpus for sentence semantic equivalence identification[C]//Proceedings of the 2018 conference on empirical methods in natural language processing. 2018: 4946-4951.
+论文地址
+MD5
+abe6c480b96cb705b4d24bd522848009
+
+## PAWS语序对抗问题匹配数据集
+词汇高度重合，考察模型对句法结构的理解能力
+https://www.luge.ai/#/luge/dataDetail?id=16
+数据集介绍
+数据集里包含了释义对和非释义对，即识别一对句子是否具有相同的释义（含义），特点是具有高度重叠词汇，重点考察模型对句法结构的理解能力。
+数据预览
+该数据集的任务定义如下：给定两个问题Q，判定该问题对语义是否匹配。
+类型	句子1	句子2	标签（label）
+相似文本	看图猜一电影名	看图猜电影	1
+不相似文本	无线路由器怎么无线上网	无线上网卡和无线路由器怎么用	0
+此外，本数据集划分为了训练集、验证集和测试集，具体统计数据如下表所示：
+数据集名称	训练集大小	开发集大小	测试集大小
+PAWS-X(中文)	49401	2000	2000
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Yang Y, Zhang Y, Tar C, et al. PAWS-X: A cross-lingual adversarial dataset for paraphrase identification[J]. arXiv preprint arXiv:1908.11828, 2019.
+
+# -----------------语义解析----------------------
+## DuSQL-中文多表SQL解析数据集
+跨领域多表中文数据集，考察模型领域迁移泛化能力、推理能力
+https://www.luge.ai/#/luge/dataDetail?id=13
+数据集介绍
+DuSQL是一个面向实际应用的数据集，包含200个数据库，覆盖了164个领域，问题覆盖了匹配、计算、推理等实际应用中常见形式。该数据集更贴近真实应用场景，要求模型领域无关、问题无关，且具备计算推理等能力。
+数据预览
+Text-to-SQL任务的输入为数据库D和自然语言问题Q，输出为对应的SQL查询语句Y。在DuSQL数据集中，每一条样本是由数据库D、自然语言问题Q、SQL查询语句Y构成的一个三元组 (D, Q, Y )，其中，数据库由若干张表格构成，表格之间通过外键连接。样例如下：
+
+数据库D：{“中国城市”: {名称, 人口, 面积, 绿化率}, “2019年宜居城市”:{城市, 票数, 排名}}
+自然语言问题Q：前10最宜居的城市有哪些，常住人口分别有多少？
+SQL查询语句Y：Select T1.名称, T1.人口 From 中国城市 As T1 Join 2019年宜居城市 As T2 On T1.名称 = T2.城市 Order By 排名 Asc Limit 10
+数据集	单/多表	语言	复杂度	数据库/表格	训练集	验证集	测试集
+DuSQL	多	中文	复杂	200/813	22521	2482	3759
+{
+  "query": "select 名称 from 高校 where 词条id not in ( select 高校id from 奖项 )",
+  "db_id": "中国高校",
+  "question": "没有获得过奖项的高校有哪几所？",
+  "question_id": "qid000002",
+  "sql": {
+    "orderBy": [],
+    "from": {
+      "table_units": [
+        [
+          "table_unit",
+          0
+        ]
+      ],
+      "conds": []
+    },
+    "union": null,
+    "except": null,
+    "having": [],
+    "limit": null,
+    "intersect": null,
+    "where": [
+      [
+        0,
+        0,
+        [
+          0,
+          [
+            0,
+            1,
+            false
+          ],
+          null
+        ],
+        {
+          "orderBy": [],
+          "from": {
+            "table_units": [
+              [
+                "table_unit",
+                2
+              ]
+            ],
+            "conds": []
+          },
+          "union": null,
+          "except": null,
+          "having": [],
+          "limit": null,
+          "intersect": null,
+          "where": [],
+          "groupBy": [],
+          "select": [
+            [
+              0,
+              [
+                0,
+                [
+                  0,
+                  14,
+                  false
+                ],
+                null
+              ]
+            ]
+          ]
+        },
+        null
+      ]
+    ],
+    "groupBy": [],
+    "select": [
+      [
+        0,
+        [
+          0,
+          [
+            0,
+            2,
+            false
+          ],
+          null
+        ]
+      ]
+    ]
+  }
+}
+基线系统
+我们提供了基于 PaddlePaddle 2.0 的基线系统，实现了基于ERNIE、BERT的Encoder，以及基于语法指导的Decoder，同时支持同时支持现有中文三个数据集DuSQL、NL2SQL、CSpider。系统已经在 Github 开源，欢迎试用。 开源系统中同时提供了本任务排行榜中所使用的评估脚本，详见开源代码的 tools/evaluation 目录。 评估脚本链接：https://github.com/PaddlePaddle/Research/tree/master/NLP/Text2SQL-BASELINE/tools/evaluation
+GitHub 基线系统
+语义解析 Text2SQL 任务基线
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Lijie Wang, Ao Zhang, Kun Wu, Ke Sun, Zhenghua Li, Hua Wu, Min Zhang, and Haifeng Wang. DuSQL: A large-scale and pragmatic chinese text-to-SQL dataset. In EMNLP , pages 6923–6935, 2020.
+
+## NL2SQL-中文单表SQL解析数据集
+跨领域单表中文数据集，考察模型领域迁移泛化能力
+https://www.luge.ai/#/luge/dataDetail?id=12
+数据集介绍
+NL2SQL是一个多领域的简单数据集，其主要包含匹配类型问题。该数据集主要验证模型的泛化能力，其要求模型具有较强的领域泛化能力、问题泛化能力。
+数据预览
+Text-to-SQL任务的输入为数据库D和自然语言问题Q，输出为对应的SQL查询语句Y。在NLSQL数据集中，数据库D仅包含一张表格，其每一条样本是由表格T、自然语言问题Q、SQL查询语句Y构成的一个三元组 (T, Q, Y )。
+
+样例如下：
+表格T：{代码, 名称, 上市地点, 收盘价, 周涨跌幅, 月涨跌幅}
+自然语言问题Q：搜房网和人人网的周涨跌幅是多少
+SQL查询语句Y：SELECT 周涨跌幅 WHERE 名称 == "搜房网" or 名称 == "人人网"
+数据集	单/多表	语言	复杂度	数据库/表格	训练集	验证集	测试集
+NL2SQL	单	中文	简单	5291/5291	41522	4396	8141
+{
+  "db_id": "69cc8c0c334311e98692542696d6e445",
+  "question": "长沙2011年平均每天成交量是3.17，那么近一周的成交量是多少",
+  "question_id": "qid1",
+  "sql": {
+    "agg": [
+      0
+    ],
+    "cond_conn_op": 1,
+    "sel": [
+      6
+    ],
+    "conds": [
+      [
+        2,
+        2,
+        "3.17"
+      ],
+      [
+        1,
+        2,
+        "长沙"
+      ]
+    ]
+  },
+  "query": "SELECT 近7日成交 WHERE 2011年日均成交 == \"3.17\" and 城市 == \"长沙\""
+}
+基线系统
+我们提供了基于 PaddlePaddle 2.0 的基线系统，实现了基于ERNIE、BERT的Encoder，以及基于语法指导的Decoder，同时支持同时支持现有中文三个数据集DuSQL、NL2SQL、CSpider。系统已经在 Github 开源，欢迎试用。 开源系统中同时提供了本任务排行榜中所使用的评估脚本，详见开源代码的 tools/evaluation 目录。 评估脚本链接：https://github.com/PaddlePaddle/Research/tree/master/NLP/Text2SQL-BASELINE/tools/evaluation
+GitHub 基线系统
+语义解析 Text2SQL 任务基线
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Sun N, Yang X, Liu Y. TableQA: a Large-Scale Chinese Text-to-SQL Dataset for Table-Aware SQL Generation[J]. arXiv preprint arXiv:2006.06434, 2020.
+
+## Cspider-中英文多表SQL解析数据集
+跨领域多表数据集，考察模型领域迁移泛化能力、多语言处理能力
+https://www.luge.ai/#/luge/dataDetail?id=11
+数据集介绍
+CSpider是一个多语言数据集，其问题以中文表达，数据库以英文存储，这种双语模式在实际应用中也非常常见，尤其是数据库引擎对中文支持不好的情况下。该数据集要求模型领域无关、问题无关，且能够实现多语言匹配。
+数据预览
+Text-to-SQL任务的输入为数据库D和自然语言问题Q，输出为对应的SQL查询语句Y。在CSpider数据集中，每一条样本是由数据库D、自然语言问题Q、SQL查询语句Y构成的一个三元组 (D, Q, Y )，其中，数据库由若干张表格构成，表格之间通过外键连接。样例如下：
+
+数据库D：{“architect”: {id, name, nationality, gender}, “bridge”:{ architect id, id, name, location, length meters, length feet}, “mill”:{ architect id, id, location, name, type, built year, notes}}
+自然语言问题Q：按其姓名的字典顺序列出所有“男”性架构师的姓名、国籍和ID。
+SQL查询语句Y：SELECT name , nationality , id FROM architect WHERE gender = "男" ORDER BY name
+数据集	单/多表	语言	复杂度	数据库/表格	训练集	验证集	测试集
+CSpider	多	中英	复杂	166/876	6831	954	1906
+注：CSpider数据集中的数据库是英文的，问题是中文的。
+{
+  "db_id": "architecture",
+  "question": "有多少建筑师是“女”性？",
+  "question_id": "qid1",
+  "sql": {
+    "orderBy": null,
+    "from": {
+      "table_units": [
+        [
+          "table_unit",
+          0
+        ]
+      ],
+      "conds": []
+    },
+    "union": null,
+    "except": null,
+    "having": [],
+    "limit": null,
+    "intersect": null,
+    "where": [
+      [
+        0,
+        2,
+        [
+          0,
+          [
+            0,
+            4,
+            false
+          ],
+          null
+        ],
+        "\"女\"",
+        null
+      ]
+    ],
+    "groupBy": [],
+    "select": [
+      [
+        3,
+        [
+          0,
+          [
+            0,
+            0,
+            false
+          ],
+          null
+        ]
+      ]
+    ]
+  },
+  "query": "SELECT count(*) FROM architect WHERE gender  =  \"女\""
+}
+基线系统
+我们提供了基于 PaddlePaddle 2.0 的基线系统，实现了基于ERNIE、BERT的Encoder，以及基于语法指导的Decoder，同时支持同时支持现有中文三个数据集DuSQL、NL2SQL、CSpider。系统已经在 Github 开源，欢迎试用。 开源系统中同时提供了本任务排行榜中所使用的评估脚本，详见开源代码的 tools/evaluation 目录。 评估脚本链接：https://github.com/PaddlePaddle/Research/tree/master/NLP/Text2SQL-BASELINE/tools/evaluation
+GitHub 基线系统
+语义解析 Text2SQL 任务基线
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Min Q, Shi Y, Zhang Y. A Pilot Study for Chinese SQL Semantic Parsing[C]. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). 2019: 3643-3649.
+
+# 机器同传
+## BSTC中译英语音翻译数据集
+到目前为止（2021.11）最大的中译英语音翻译数据集，可用来考察机器同传模型的翻译-延时效果
+https://www.luge.ai/#/luge/dataDetail?id=4
+数据集介绍
+BSTC数据集是一个大规模中译英语音翻译数据集，它包括一系列授权了的中文演讲视频（68小时）及其对应的转录文本和翻译文本（英语），弥补了已有语音翻译数据集在中文视频上的缺陷。
+数据预览
+同声传译能够实时地翻译讲话的内容，因而广泛应用于国际会议、谈判、新闻发布、法律诉讼和医学等不同场景。机器同传结合了机器翻译（Machine Translation），语音识别（Automatic Speech Recognition）和语音合成（Text-To-Speech）等人工智能技术，已经成为重要的前沿研究领域。
+
+本数据集包括中英、英西两个方向共4项任务。
+1、中文->英文翻译，输入：streaming transcription
+2、中文->英文翻译，输入：streaming ASR [1]
+3、中文->英文翻译，输入：audio文件
+4、英文->西班牙语翻译，输入：streaming transcription
+
+比赛任务涉及三类输入：
+1、Streaming transcription是指以流式的形式输入标准转写数据。即，将一个句子切分为多行，每行依次递增一个词，直到整句结束。
+2、Streaming ASR提供实时的流式自动语音识别结果。在语音识别期间有时会出现识别错误，但识别的结果也会随着切分句子的变化而实时改变。需要注意的是，语音识别不包括标点的识别。
+3、Audio：您也可以用自己的语音识别系统并以语音文件作为输入。
+
+下表中展示了上述三类输入。我们会把输入数据处理为流式格式来评估系统的延迟（具体参见“效果评估”）。
+流式转录	流式自动语音识别	语音
+大	大家	点击http://mtw.so/5QN3dR
+大家	大家好	
+大家好	大家好欢迎	
+大家好！	大家好欢迎大	
+欢	大家好欢迎大家	
+欢迎	大家好欢迎大家关注	
+欢迎大	大家好欢迎大家关注注	
+欢迎大家	大家好欢迎大家关注祝英	
+欢迎大家关	大家好欢迎大家关注祝unit	
+欢迎大家关注	大家好欢迎大家关注祝unit对话性	
+欢迎大家关注UNIT	大家好欢迎大家关注祝unit对话性和	
+欢迎大家关注UNIT对	大家好欢迎大家关注祝unit对话性和高级	
+欢迎大家关注UNIT对话	大家好欢迎大家关注祝unit对话性和高级可	
+欢迎大家关注UNIT对话系	大家好欢迎大家关注祝unit对话性和高级课程	
+欢迎大家关注UNIT对话系统		
+欢迎大家关注UNIT对话系统的		
+欢迎大家关注UNIT对话系统的高		
+欢迎大家关注UNIT对话系统的高级		
+欢迎大家关注UNIT对话系统的高级课		
+欢迎大家关注UNIT对话系统的高级课程		
+欢迎大家关注UNIT对话系统的高级课程。		
+对于中英方向的翻译，我们采用了百度的BSTC同传中译英数据集，训练集包含66小时的中文演讲视频，人工转录结果，语音识别结果和英文翻译数据。同时，我们提供了16个演讲和他们对应的流式自动语音识别和流式转录结果作为发展集用于评估您的模型效果。
+
+对于英西方向的翻译任务，我们暂时不提供其他语音翻译数据集。您需要使用UN数据集来训练翻译模型。对于模型效果评估，我们会提供流式转录数据作为发展集。 如表格3所示，我们提供7段语音翻译数据集中的数据，带有“√”的内容见newdata.tar.gz。
+赛道	语言方向	输入数据	训练集	开发集
+1	Zh->En	语音	audio_train.tar.gz	audio_dev.tar.gz
+2	Zh->En	自动语音识别	√	√
+3	Zh->En	转录	√	√
+4	En->Es	转录	/	√
+表格3. 提供的语音翻译数据集				
+基线系统
+GitHub 基线系统
+SimulTrans Baseline
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Zhang et al. (2021). BSTC: A Large-Scale Chinese-English Speech Translation Dataset. Proceedings of the Second Workshop on Automatic Simultaneous Translation, 28-35.
+论文地址
+MD5
+ab9c39a554814e63b7e19fb076f43707
+
+# --------------信息抽取----------------------
+## DuIE2.0中文关系抽取数据集
+业界规模最大的中文关系抽取数据集，考察schema约束下的关系抽取能力
+https://www.luge.ai/#/luge/dataDetail?id=5
+数据集介绍
+DuIE2.0是业界规模最大的中文关系抽取数据集，其schema在传统简单关系类型基础上添加了多元复杂关系类型，此外其构建语料来自百度百科、百度信息流及百度贴吧文本，全面覆盖书面化表达及口语化表达语料，能充分考察真实业务场景下的关系抽取能力。
+数据预览
+该任务的目标是对于给定的自然语言句子，根据预先定义的schema集合，抽取出所有满足schema约束的SPO三元组。schema定义了关系P以及其对应的主体S和客体O的类别。根据O值的复杂程度可以将目标关系划分为以下两种：
+
+1.简单O值：
+也就是说O是一个单一的文本片段。例如，「妻子」关系的schema定义为：
+{S_TYPE:人物,P:妻子,O_TYPE:{@value:人物}}
+简单O值是最常见的关系类型。为了保持格式统一，简单O值类型的schema定义也通过结构体保存，结构体中只有一个@value字段存放O值。
+
+2.复杂O值：
+也就是说O是一个结构体，由多个语义明确的文本片段共同组成，多个文本片段对应了结构体中的多个槽位 (slot)。例如，「饰演」关系中O值有两个槽位@value和inWork，分别表示「饰演的角色是什么」以及「在哪部影视作品中发生的饰演关系」，其schema定义为：
+{S_TYPE:娱乐人物,P:饰演,O_TYPE:{@value:角色,inWork:影视作品}}
+在复杂O值类型的定义中，@value槽位可以认为是该关系的默认O值槽位，对于该关系不可或缺，其他槽位均可缺省。
+
+关系抽取输入/输出：
+
+输入：一个或多个连续完整句子。
+
+输出：句子中包含的所有符合给定schema约束的SPO三元组。
+
+输入示例：
+{
+  "text": "王雪纯是87版《红楼梦》中晴雯的配音者，她是《正大综艺》的主持人"
+}
+输出示例：
+{
+  "text": "王雪纯是87版《红楼梦》中晴雯的配音者，她是《正大综艺》的主持人",
+  "spo_list": [
+    {
+      "predicate": "配音",
+      "subject": "王雪纯",
+      "subject_type": "娱乐人物",
+      "object": {
+        "@value": "晴雯",
+        "inWork": "红楼梦"
+      },
+      "object_type": {
+        "@value": "人物",
+        "inWork": "影视作品"
+      }
+    },
+    {
+      "predicate": "主持人",
+      "subject": "正大综艺",
+      "subject_type": "电视综艺",
+      "object": {
+        "@value": "王雪纯"
+      },
+      "object_type": {
+        "@value": "人物"
+      }
+    }
+  ]
+}
+基线系统
+本项目将提供基于飞桨框架PaddlePaddle2.0和PaddleNLP的开源基线系统，提供丰富的高层API，全面支持动态图开发模式，从开发、训练到预测部署提供优质的整体体验。推荐您参照基线方案，基于PaddleNLP的丰富API库进行二次开发、模型调优和方案创新。
+GitHub 基线系统
+LIC2021竞赛 DuIE 关系抽取基线
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Li S., et al. (2019) DuIE: A Large-Scale Chinese Dataset for Information Extraction. In: Tang J., Kan MY., Zhao D., Li S., Zan H. (eds.) Natural Language Processing and Chinese Computing. NLPCC 2019. Lecture Notes in Computer Science, vol 11839. Springer, Cham.
+
+## DuEE1.0中文事件抽取数据集
+事件抽取数据集，考察模型对事件知识的分析能力
+https://www.luge.ai/#/luge/dataDetail?id=6
+数据集介绍
+DuEE1.0是百度发布的中文事件抽取数据集，包含65个事件类型的1.7万个具有事件信息的句子（2万个事件）。事件类型根据百度风云榜的热点榜单选取确定，具有较强的代表性。65个事件类型中不仅包含「结婚」、「辞职」、「地震」等传统事件抽取评测中常见的事件类型，还包含了「点赞」等极具时代特征的事件类型。数据集中的句子来自百度信息流资讯文本，相比传统的新闻资讯，文本表达自由度更高，事件抽取的难度也更大。
+数据预览
+该任务的目标是对于给定的自然语言句子，根据预先指定的事件类型和论元角色，识别句子中所有目标事件类型的事件，并根据相应的论元角色集合抽取事件所对应的论元。其中目标事件类型 (event_type) 和论元角色 (role) 限定了抽取的范围，例如 (event_type：胜负，role：时间，胜者，败者，赛事名称)、(event_type：夺冠，role：夺冠事件，夺冠赛事，冠军)。
+
+句子级事件抽取输入/输出：
+
+输入：包含事件信息的一个或多个连续完整句子。
+输出：属于预先定义的事件类型、论元角色的事件论元。
+
+输入示例：
+{
+  "text": "历经4小时51分钟的体力、意志力鏖战，北京时间9月9日上午纳达尔在亚瑟·阿什球场，以7比5、6比3、5比7、4比6和6比4击败赛会5号种子俄罗斯球员梅德韦杰夫，夺得了2019年美国网球公开赛男单冠军。",
+  "id": "6a10824fe9c7b2aa776aa7e3de35d45d"
+}
+输出示例：
+{
+  "id": "6a10824fe9c7b2aa776aa7e3de35d45d",
+  "event_list": [
+    {
+      "event_type": "竞赛行为-胜负",
+      "arguments": [
+        {
+          "role": "时间",
+          "argument": "北京时间9月9日上午"
+        },
+        {
+          "role": "胜者",
+          "argument": "纳达尔"
+        },
+        {
+          "role": "败者",
+          "argument": "5号种子俄罗斯球员梅德韦杰夫"
+        },
+        {
+          "role": "赛事名称",
+          "argument": "2019年美国网球公开赛"
+        }
+      ]
+    },
+    {
+      "event_type": "竞赛行为-夺冠",
+      "arguments": [
+        {
+          "role": "时间",
+          "argument": "北京时间9月9日上午"
+        },
+        {
+          "role": "夺冠赛事",
+          "argument": "2019年美国网球公开赛"
+        },
+        {
+          "role": "冠军",
+          "argument": "纳达尔"
+        }
+      ]
+    }
+  ]
+}
+基线系统
+本项目将提供基于飞桨框架PaddlePaddle2.0和PaddleNLP的开源基线系统，提供丰富的高层API，全面支持动态图开发模式，从开发、训练到预测部署提供优质的整体体验。推荐您参照基线方案，基于PaddleNLP的丰富API库进行二次开发、模型调优和方案创新。
+GitHub 基线系统
+LIC2021竞赛 DuEE 事件抽取基线
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+ Li, X., et al.: DuEE: a large-scale dataset for Chinese event extraction in real-world scenarios. In: Zhu, X., Zhang, M., Hong, Yu., He, R. (eds.) NLPCC 2020. LNCS (LNAI), vol. 12431, pp. 534–545. Springer, Cham (2020).
+ 
+ ## DuEE-fin金融领域篇章级事件抽取数据集
+金融领域篇章级事件抽取数据集，考察模型对长文本的事件知识分析
+https://www.luge.ai/#/luge/dataDetail?id=7
+数据集介绍
+DuEE-fin是百度最新发布的金融领域篇章级事件抽取数据集，包含13个事件类型的1.17万个篇章，同时存在部分非目标篇章作为负样例。事件类型来源于常见的金融事件，数据集中的篇章来自金融领域的新闻和公告，覆盖了真实应用场景中诸多难以解决的问题。
+数据预览
+该任务的目标是对于给定的自然语言篇章，根据预先指定的事件类型和论元角色，识别篇章中所有目标事件类型的事件，并根据相应的论元角色集合抽取事件所对应的论元。其中待抽取的事件类型限定为金融领域。
+
+篇章级事件抽取输入/输出：
+
+输入：包含事件信息的一个或多个连续完整篇章。
+输出：属于预先定义的事件类型、论元角色的事件论元。
+
+输入示例：
+{
+  "text": "【亿邦动力讯】9月21日消息，“卡方科技”今日宣布获得数千万元B轮融资，由广发信德领投，老股东华盖资本跟投，由义柏资本担任独家财务顾问。卡方科技以算法交易执行切入量化交易领域，拥有自主知识产权的交易服务平台ATGO，为客户提供算法交易策略和量化投资的解决方案。本轮融资将用于进一步的研发投入及人才引进。",
+  "title": "定位算法交易服务商“卡方科技”获数千万元B轮融资",
+  "id": "6a10824fe9c7b2aa776aa7e3de35d45c"
+}
+输出示例：
+{
+  "id": "6a10824fe9c7b2aa776aa7e3de35d45c",
+  "event_list": [
+    {
+      "event_type": "企业融资",
+      "arguments": [
+        {
+          "role": "投资方",
+          "argument": "广发信德"
+        },
+        {
+          "role": "投资方",
+          "argument": "华盖资本"
+        },
+        {
+          "role": "被投资方",
+          "argument": "卡方科技"
+        },
+        {
+          "role": "融资轮次",
+          "argument": "B"
+        },
+        {
+          "role": "融资金额",
+          "argument": "数千万元"
+        },
+        {
+          "role": "事件时间",
+          "argument": "9月21日"
+        },
+        {
+          "role": "披露时间",
+          "argument": "9月21日"
+        }
+      ]
+    }
+  ]
+}
+基线系统
+本项目将提供基于飞桨框架PaddlePaddle2.0和PaddleNLP的开源基线系统，提供丰富的高层API，全面支持动态图开发模式，从开发、训练到预测部署提供优质的整体体验。推荐您参照基线方案，基于PaddleNLP的丰富API库进行二次开发、模型调优和方案创新。
+GitHub 基线系统
+LIC2021竞赛 DuEE 事件抽取基线
+数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+
+Li, X., et al. (2021) DuEE-fin: a document-level event extraction dataset in the financial domain released by Baidu. Retrieved from https://aistudio.baidu.com/aistudio/competition/detail/46.
+
+# ---------------实体链指---------------
+## DuEL 2.0中文短文本实体链指数据集
+旨在借助实体链指技术，拓展其对应的AI智能应用需求，并将技术成果实践于更多的现实场景
+https://www.luge.ai/#/luge/dataDetail?id=24
+数据集介绍
+DuEL 2.0 是一个以中文短文本实体链接为目标任务的数据集。该数据集中的样本主要来自于搜索Query、微博、对话内容、标题等，样本的口语化严重，上下文语境不丰富，难度较大。此外，DuEL2.0数据集具有如下特点：
+
+
+1、大规模：7万训练集、1万开发集、1万测评集32.4万知识库实体，282.6万SPO；
+
+2、高质量：所有标注数据通过人工众包完成，实体链指及实体类型准确率达95%，知识库实体重复率小于5%；
+
+3、面向真实场景：数据来自于互联网网页标题、UGC短视频标题、搜索Query。
+数据预览
+DuEL2.0数据集主要由知识库、标注数据集两部分组成，详情如下：
+该任务知识库来自百度百科知识库。知识库中的每个实体都包含一个subject_id(知识库id)，一个subject名称，实体的别名，对应的概念类型，以及与此实体相关的一系列二元组<predicate，object>（<属性，属性值>）信息形式。知识库中每行代表知识库的一条记录（一个实体信息），每条记录为json数据格式。
+
+示例如下所示：
+{
+  "subject_id": "1000131",
+  "subject": "小王子",
+  "alias": [
+    "Le Petit Prince",
+    "The Little Prince",
+    "リトルプリンス 星の王子さまと私",
+    "小王子"
+  ],
+  "type": [
+    "Work"
+  ],
+  "data": [
+    {
+      "predicate": "外文名",
+      "object": "Le Petit Prince"
+    },
+    {
+      "predicate": "发行公司",
+      "object": "派拉蒙影业"
+    },
+    {
+      "predicate": "类型",
+      "object": "奇幻"
+    }
+  ]
+}
+标注数据集由训练集、验证集和测试集组成，整体标注数据大约9万条左右，标注数据源主要来自于：互联网网页标题、UGC短视频标题、搜索Query。所有标注数据均通过百度众包标注生成。 标注数据集中每条数据的格式为：
+{
+  "text_id": "1",
+  "text": "《琅琊榜》海宴_【原创小说|权谋小说】",
+  "mention_data": [
+    {
+      "kb_id": "2135131",
+      "mention": "琅琊榜",
+      "offset": "1"
+    },
+    {
+      "kb_id": "10572965",
+      "mention": "海宴",
+      "offset": "5"
+    },
+    {
+      "kb_id": "215143",
+      "mention": "原创小说",
+      "offset": "9"
+    },
+    {
+      "kb_id": " NIL_Work ",
+      "mention": "权谋小说",
+      "offset": "14"
+    }
+  ]
+}
+以上数据集的整体情况见下表：
+数据集名称	训练集大小	开发集大小	测试集大小	实体个数	SPO数量	实体平均属性数量	实体描述平均长度
+DuEL 2.0	69942	9990	9993	32.4万	282.6万	8.71	39.88
+
+# ---------低资源语言翻译---------
+## 百度低资源语言翻译数据集
+低资源语言翻译数据集，考察模型低资源翻译能力
+
+# -----------------自然语言推理------------------
+## 中文成语语义推理数据集(CINLID)
+中文成语语义推理数据集，可用于测试模型的非字面义语义理解能力
+https://www.luge.ai/#/luge/dataDetail?id=39
+数据集介绍
+计算词/词组、句子、段落和文档之间的语义相似性（STS，Semantic similarity of text）在自然语言处理和计算语言学中起着重要作用，是一个非常重要的任务。
+
+语义相似性中的条目（词、短语、句等）之间的距离概念是基于其意义或语义内容的相似性，而不是词汇学的相似性。基于字面含义的“望文生义”在做NLP相关任务时很容易出现问题，如传统测度文本相似度的方法经常会把“目不识丁”和“目中无人”的相似度算得很高。但它们的语义明显是不相关的；又比如“孤芳自赏”和“师心自用”都有“自负、骄傲”的含义，语义相似度较高，但一般传统的文本相似度计算方法很难将它们的内在语义相似性准确的捕捉到。
+
+为了得到良好的语句表示，我们需要一个能编码基础语义关系的语料，而且字面重叠的情况要少，让机器学习的难度更大些，以便学到更多有用的语义信息。因此，我们基于同一关系、包含关系、重叠关系、分离关系这4种基本的语义类别构建了中文成语语义推理数据集（Chinese Idioms Natural Language Inference Dataset）。
+数据预览
+中文成语语义推理数据集（Chinese Idioms Natural Language Inference Dataset）收集了106832条由人工撰写的成语对（含少量歇后语、俗语等短文本），通过人工标注的方式进行平衡分类，标签为entailment、contradiction和neutral，支持自然语言推理（NLI）的任务。
+
+数据集以json形式存在，每一行即一条数据，每一条数据包含sentence1、sentence2、和label 3个字段，label的取值范围为entailment、contradiction和neutral，数据样例如下：
+[
+  {
+    "sentence1": "拔草塞",
+    "sentence2": "野味",
+    "label": "neutral"
+  },
+  {
+    "sentence1": "唧唧咕咕",
+    "sentence2": "漱流枕石",
+    "label": "neutral"
+  },
+  {
+    "sentence1": "等闲之人",
+    "sentence2": "人百其身",
+    "label": "neutral"
+  },
+  {
+    "sentence1": "铁腕人物",
+    "sentence2": "铁杆人物",
+    "label": "entailment"
+  },
+  {
+    "sentence1": "拾陈蹈故",
+    "sentence2": "因循守旧",
+    "label": "entailment"
+  },
+  {
+    "sentence1": "稀奇古怪",
+    "sentence2": "平淡无奇",
+    "label": "contradiction"
+  },
+  {
+    "sentence1": "沉滓泛起",
+    "sentence2": "凤泊鸾飘",
+    "label": "neutral"
+  }
+]
+其中，各标签的含义如下：
+
+entailment：表示含义很接近，前者涵盖了后者或者语义完全相同，即近义词或者同义词/等义词。如开心、快乐；美丽、漂亮。它对应于上述提及的同一关系、包含关系。
+neutral：表示语义上无明显关联性、不属于同一语义范畴的词汇。它对应于上述提及的分离关系。
+contradiction：表示两个含义相反的词，包括绝对反义词和相对反义词2类，即分为成对的意义相反、互相对立的词。如：真——假，动——静，拥护——反对。这类反义词所表达的概念意义互相排斥。或成对的经常处于并举、对立位置的词。如：黑——白，高山——平地。这类反义词没有矛盾对立关系，但对比鲜明。这种情况较复杂，它对应于上述提及的分离关系和重叠关系。比如，黑、白虽是反义，但都同属颜色这个大类，有一定的主题重叠关系；但它们的方向相反，有一定的分离倾向，对应上述提及的重叠关系。
+
+注：训练集80124 条，测试集26708条。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,37 @@
+------------中文对话
+# AdvertiseGen广告文案生成数据集
+## 数据集介绍
+AdvertiseGen以商品网页的标签与文案的信息对应关系为基础构造，是典型的开放式生成任务，在模型基于key-value输入生成开放式文案时，与输入信息的事实一致性需要得到重点关注。
+## 数据预览
+任务描述：给定商品信息的关键词和属性列表kv-list，生成适合该商品的广告文案adv；
+数据规模：训练集114k，验证集1k，测试集3k；
+数据来源：清华大学CoAI小组；
+数据样例：
+```
+{
+  "content": "类型#上衣*材质#牛仔布*颜色#白色*风格#简约*图案#刺绣*衣样式#外套*衣款式#破洞",
+  "summary": "简约而不简单的牛仔外套，白色的衣身十分百搭。衣身多处有做旧破洞设计，打破单调乏味，增加一丝造型看点。衣身后背处有趣味刺绣装饰，丰富层次感，彰显别样时尚。"
+}
+```
+## 基线系统
+本数据集提供的基线系统，基于百度提出的ERNIE-UNIMO统一模态预训练框架。在本次比赛的三个文本生成任务中，我们基于本基线使用的模型是UNIMO-text,是基于ERNIE-UNIMO框架在文本数据上预训练得到模型。
+GitHub 基线系统
+面向事实一致性的生成评测基线
+## 数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+···
+Shao, Zhihong, et al. "Long and Diverse Text Generation with Planning-based Hierarchical Variational Model." Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). 2019.
+···
+## MD5
+4be89fb276e8727923262d786cd3007c
+
+
+------------中文对话
 # 豆瓣中文开放域对话数据集
+douban_new
+任务类型：中文对话
+数据集大小：145M
+特点：闲聊能力
 ## 数据集介绍
 Douban是一个大规模中文开放域对话数据集，旨在考察模型在闲聊场景中，是否可以生成流畅的、与上下文相关的对话回复。
 ## 数据预览
@@ -101,3 +134,10 @@ Douban是一个大规模中文开放域对话数据集，旨在考察模型在�
   "situation": "聊天时间:2018-12-24 中午12:00，在公司 星期一"
 }
 ```
+## 数据集引用
+如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
+```
+Yu Wu, Wei Wu, Chen Xing, Ming Zhou, Zhoujun Li. 2017. Sequential Matching Network: A New Archtechture for Multi-turn Response Selection in Retrieval-based Chatbots. In ACL.
+```
+## MD5
+557b8f289d57478af442ba67c25037ec

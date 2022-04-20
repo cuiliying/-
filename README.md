@@ -1873,9 +1873,9 @@ MD5
 ## BQ金融领域问题匹配数据集
 金融领域数据集，考察模型在金融领域上的能力
 https://www.luge.ai/#/luge/dataDetail?id=15
-数据集介绍
+### 数据集介绍
 银行金融领域的问题匹配数据，包括了从一年的线上银行系统日志里抽取的问题pair对，是目前最大的银行领域问题匹配数据。
-数据预览
+### 数据预览
 该数据集的任务定义如下：给定两个问题Q，判定该问题对语义是否匹配。
 类型	句子1	句子2	标签（label）
 相似文本	看图猜一电影名	看图猜电影	1
@@ -1883,14 +1883,59 @@ https://www.luge.ai/#/luge/dataDetail?id=15
 此外，本数据集划分为了训练集、验证集和测试集，具体统计数据如下表所示：
 数据集名称	训练集大小	开发集大小	测试集大小
 BQ Corpus	100000	10000	10000
-数据集引用
+### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
-
+```
 Chen J, Chen Q, Liu X, et al. The bq corpus: A large-scale domain-specific chinese corpus for sentence semantic equivalence identification[C]//Proceedings of the 2018 conference on empirical methods in natural language processing. 2018: 4946-4951.
-论文地址
+```
 MD5
 abe6c480b96cb705b4d24bd522848009
 
+## DuQM细粒度鲁棒性问题匹配数据集
+问题匹配评测集合，考察模型在实际应用中的鲁棒性
+https://www.luge.ai/#/luge/dataDetail?id=27
+### 数据集介绍
+DuQM评测集关注问题匹配模型在真实应用场景中的鲁棒性，从词汇理解、句法结构、错别字、口语化四个维度检测模型的能力，从而发现模型的不足之处，推动语义匹配技术的发展。
+### 数据预览
+该数据集的任务定义如下：给定两个问题Q，判定该问题对语义是否匹配。
+```
+{
+  "test": [
+    {
+      "q1": "美国最安全的城市",
+      "q2": "美国的城市"
+    },
+    {
+      "q1": "有关万思维的电视剧",
+      "q2": "有关万思维的电视剧谁来说一说"
+    },
+    {
+      "q1": "西宁二手车落户政策",
+      "q2": "长沙二手车落户政策"
+    },
+    {
+      "q1": "抵押裸车是什么意思",
+      "q2": "裸车是什么意思"
+    },
+    {
+      "q1": "呼和浩特的气温",
+      "q2": "兰州的气温"
+    },
+    {
+      "q1": "清幽幽的意思是什么",
+      "q2": "清的意思是什么"
+    },
+    {
+      "q1": "植树节的由来100字",
+      "q2": "植树节的由来10字"
+    },
+    {
+      "q1": "梦到亲人做饭",
+      "q2": "梦见亲人做饭"
+    }
+  ]
+}
+```
 ## PAWS语序对抗问题匹配数据集
 词汇高度重合，考察模型对句法结构的理解能力
 https://www.luge.ai/#/luge/dataDetail?id=16
@@ -2014,17 +2059,17 @@ DuSQL	多	中文	复杂	200/813	22521	2482	3759
 我们提供了基于 PaddlePaddle 2.0 的基线系统，实现了基于ERNIE、BERT的Encoder，以及基于语法指导的Decoder，同时支持同时支持现有中文三个数据集DuSQL、NL2SQL、CSpider。系统已经在 Github 开源，欢迎试用。 开源系统中同时提供了本任务排行榜中所使用的评估脚本，详见开源代码的 tools/evaluation 目录。 评估脚本链接：https://github.com/PaddlePaddle/Research/tree/master/NLP/Text2SQL-BASELINE/tools/evaluation
 GitHub 基线系统
 语义解析 Text2SQL 任务基线
-数据集引用
+### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
-
+```
 Lijie Wang, Ao Zhang, Kun Wu, Ke Sun, Zhenghua Li, Hua Wu, Min Zhang, and Haifeng Wang. DuSQL: A large-scale and pragmatic chinese text-to-SQL dataset. In EMNLP , pages 6923–6935, 2020.
-
+```
 ## NL2SQL-中文单表SQL解析数据集
 跨领域单表中文数据集，考察模型领域迁移泛化能力
 https://www.luge.ai/#/luge/dataDetail?id=12
-数据集介绍
+### 数据集介绍
 NL2SQL是一个多领域的简单数据集，其主要包含匹配类型问题。该数据集主要验证模型的泛化能力，其要求模型具有较强的领域泛化能力、问题泛化能力。
-数据预览
+### 数据预览
 Text-to-SQL任务的输入为数据库D和自然语言问题Q，输出为对应的SQL查询语句Y。在NLSQL数据集中，数据库D仅包含一张表格，其每一条样本是由表格T、自然语言问题Q、SQL查询语句Y构成的一个三元组 (T, Q, Y )。
 
 样例如下：
@@ -2033,6 +2078,7 @@ Text-to-SQL任务的输入为数据库D和自然语言问题Q，输出为对应�
 SQL查询语句Y：SELECT 周涨跌幅 WHERE 名称 == "搜房网" or 名称 == "人人网"
 数据集	单/多表	语言	复杂度	数据库/表格	训练集	验证集	测试集
 NL2SQL	单	中文	简单	5291/5291	41522	4396	8141
+```
 {
   "db_id": "69cc8c0c334311e98692542696d6e445",
   "question": "长沙2011年平均每天成交量是3.17，那么近一周的成交量是多少",
@@ -2060,14 +2106,16 @@ NL2SQL	单	中文	简单	5291/5291	41522	4396	8141
   },
   "query": "SELECT 近7日成交 WHERE 2011年日均成交 == \"3.17\" and 城市 == \"长沙\""
 }
+```
 基线系统
 我们提供了基于 PaddlePaddle 2.0 的基线系统，实现了基于ERNIE、BERT的Encoder，以及基于语法指导的Decoder，同时支持同时支持现有中文三个数据集DuSQL、NL2SQL、CSpider。系统已经在 Github 开源，欢迎试用。 开源系统中同时提供了本任务排行榜中所使用的评估脚本，详见开源代码的 tools/evaluation 目录。 评估脚本链接：https://github.com/PaddlePaddle/Research/tree/master/NLP/Text2SQL-BASELINE/tools/evaluation
 GitHub 基线系统
 语义解析 Text2SQL 任务基线
-数据集引用
+### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
-
+```
 Sun N, Yang X, Liu Y. TableQA: a Large-Scale Chinese Text-to-SQL Dataset for Table-Aware SQL Generation[J]. arXiv preprint arXiv:2006.06434, 2020.
+```
 
 ## Cspider-中英文多表SQL解析数据集
 跨领域多表数据集，考察模型领域迁移泛化能力、多语言处理能力

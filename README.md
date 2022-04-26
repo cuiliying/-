@@ -20,9 +20,9 @@ GitHub 基线系统
 面向事实一致性的生成评测基线
 ### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
-···
+```
 Shao, Zhihong, et al. "Long and Diverse Text Generation with Planning-based Hierarchical Variational Model." Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). 2019.
-···
+```
 ### MD5
 4be89fb276e8727923262d786cd3007c
 

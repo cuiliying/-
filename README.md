@@ -1,4 +1,4 @@
-[文本生成][1]
+[文本生成] [1]
 # [1]:------------文本生成------------
 ## AdvertiseGen广告文案生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=9

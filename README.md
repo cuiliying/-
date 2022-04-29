@@ -1,6 +1,8 @@
 # ------------中文对话------------
 ## AdvertiseGen广告文案生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=9
+下载量 154
+数据集大小 17.1M
 ### 数据集介绍
 AdvertiseGen以商品网页的标签与文案的信息对应关系为基础构造，是典型的开放式生成任务，在模型基于key-value输入生成开放式文案时，与输入信息的事实一致性需要得到重点关注。
 ### 数据预览
@@ -16,22 +18,15 @@ AdvertiseGen以商品网页的标签与文案的信息对应关系为基础构�
 ```
 ### 基线系统
 本数据集提供的基线系统，基于百度提出的ERNIE-UNIMO统一模态预训练框架。在本次比赛的三个文本生成任务中，我们基于本基线使用的模型是UNIMO-text,是基于ERNIE-UNIMO框架在文本数据上预训练得到模型。
-GitHub 基线系统
-面向事实一致性的生成评测基线
 ### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
 ```
 Shao, Zhihong, et al. "Long and Diverse Text Generation with Planning-based Hierarchical Variational Model." Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). 2019.
 ```
-### MD5
-4be89fb276e8727923262d786cd3007c
-
 ## LCSTS_new中文短摘要生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=10
-任务类型：文本生成
+下载量 141
 数据集大小：263.1M
-使用权限：学术
-特点：事实一致性
 ### 数据集介绍
 LCSTS_new是中文短摘要最常用的LCSTS短摘要数据集的升级版本，在数据量、质量方面均有显著提升，在信息摘要与提炼的过程中，与原文的事实一致性需要得到重点关注。
 ### 数据预览
@@ -48,22 +43,15 @@ LCSTS_new是中文短摘要最常用的LCSTS短摘要数据集的升级版本，
 ```
 ### 基线系统
 本数据集提供的基线系统，基于百度提出的ERNIE-UNIMO统一模态预训练框架。在本次比赛的三个文本生成任务中，我们基于本基线使用的模型是UNIMO-text,是基于ERNIE-UNIMO框架在文本数据上预训练得到模型。
-GitHub 基线系统
-面向事实一致性的生成评测基线
 ### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
 ```
 Hu, Baotian, Qingcai Chen, and Fangze Zhu. "LCSTS: A Large Scale Chinese Short Text Summarization Dataset." Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing. 2015.
 ```
-### MD5
-98479b44179f0657526f7bb32721ef22
-
 ## DuReader_QG问题生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=8
-任务类型：文本生成
+下载量 119
 数据集大小：6M
-使用权限：学术
-特点：事实一致性
 ### 数据集介绍
 DuReader robust旨在利用真实应用中的数据样本来衡量阅读理解模型的鲁棒性，评测模型的过敏感性、过稳定性以及泛化能力，是首个中文阅读理解鲁棒性数据集。
 DuReader_QG是从DuReader robust中选择的问题生成任务子集
@@ -81,16 +69,11 @@ DuReader_QG是从DuReader robust中选择的问题生成任务子集
 ```
 ### 基线系统
 本数据集提供的基线系统，基于百度提出的ERNIE-UNIMO统一模态预训练框架。在本次比赛的三个文本生成任务中，我们基于本基线使用的模型是UNIMO-text,是基于ERNIE-UNIMO框架在文本数据上预训练得到模型。
-GitHub 基线系统
-面向事实一致性的生成评测基线
 ### 数据集引用
 如在学术论文中使用千言数据集，请添加相关引用说明，具体如下：
 ```
 Tang, H., et al. (2021). DuReader_robust: A Chinese Dataset Towards Evaluating Robustness and Generalization of Machine Reading Comprehension in Real-World Applications. Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 2: Short Papers), 955–963.  
 ```
-### MD5
-63b8fc89decc610df8516ccf4c55768c
-
 # ------------情感分析------------
 ## ChnSentiCorp句子级情感分类数据集
 https://www.luge.ai/#/luge/dataDetail?id=25

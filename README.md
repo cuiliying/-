@@ -1,5 +1,4 @@
-[文本生成] [1]
-# [1]:------------文本生成------------
+# ------------文本生成------------
 ## AdvertiseGen广告文案生成数据集
 https://www.luge.ai/#/luge/dataDetail?id=9
 下载量 154
@@ -75,11 +74,10 @@ DuReader_QG是从DuReader robust中选择的问题生成任务子集
 ```
 Tang, H., et al. (2021). DuReader_robust: A Chinese Dataset Towards Evaluating Robustness and Generalization of Machine Reading Comprehension in Real-World Applications. Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 2: Short Papers), 955–963.  
 ```
-
 # ------------中文对话------------
 ## 豆瓣中文开放域对话数据集
 https://www.luge.ai/#/luge/dataDetail?id=33
-任务类型：中文对话
+下载量 10941
 数据集大小：145M
 特点：闲聊能力
 ### 数据集介绍
@@ -189,9 +187,6 @@ Douban是一个大规模中文开放域对话数据集，旨在考察模型在�
 ```
 Yu Wu, Wei Wu, Chen Xing, Ming Zhou, Zhoujun Li. 2017. Sequential Matching Network: A New Archtechture for Multi-turn Response Selection in Retrieval-based Chatbots. In ACL.
 ```
-### MD5
-557b8f289d57478af442ba67c25037ec
-
 ## DuConv知识对话数据集
 https://www.luge.ai/#/luge/dataDetail?id=30
 数据集介绍
